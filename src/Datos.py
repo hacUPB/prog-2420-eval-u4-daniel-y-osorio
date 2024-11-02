@@ -41,18 +41,19 @@ def txt_op3(ruta_txt):
 def txt():
     while True:
         txt_op = input("Escoja la opción que desea realizar\n1) Contar numero de palabras\n2) Reemplazar una palabra por otra\n3) Contar el numero de caracteres\n4) Regresar al menu principal\n")
-        ruta_txt= input("Ingrese la ruta del archivo de texto: ").strip('"').strip("'")
-        if txt_op == "1":
-            txt_op1(ruta_txt)
-        elif txt_op == "2":
-            txt_op2(ruta_txt)
-        elif txt_op == "3":
-            txt_op3(ruta_txt)
-        elif txt_op == "4":
+        if txt_op != ("4"):
+            ruta_txt= input("Ingrese la ruta del archivo de texto: ").strip('"').strip("'")
+            if txt_op == "1":
+                txt_op1(ruta_txt)
+            elif txt_op == "2":
+                txt_op2(ruta_txt)
+            elif txt_op == "3":
+                txt_op3(ruta_txt)
+            else:
+                print("Ingrese una opción adecuada.")
+        else:
             print("Regresando a menu principal")
             break
-        else:
-            print("Ingrese una opción adecuada.")
 
 ## Funciones para archivos CSV
 def csv_op1(ruta_csv):
@@ -150,18 +151,20 @@ def csv_op3(ruta_csv):
 def Fcsv():
     while True:
         csv_op = input("Que operación con archivos csv desea realizar? \n1) Mostrar las 15 primeras filas\n2) Calcular estadisticas\n3) Graficar una columna\n4) Regresar al menu principal\n")
-        ruta_csv = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
-        if csv_op == "1":
-            csv_op1(ruta_csv)
-        elif csv_op == "2":
-            csv_op2(ruta_csv)
-        elif csv_op == "3":
-            csv_op3(ruta_csv)
-        elif csv_op == "4":
+        if csv_op != ("4"):
+            ruta_csv = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
+            if csv_op == "1":
+                csv_op1(ruta_csv)
+            elif csv_op == "2":
+                csv_op2(ruta_csv)
+            elif csv_op == "3":
+                csv_op3(ruta_csv)
+            else:
+                print("Ingrese una opción adecuada.")
+        else:
             print("Regresando a menu principal")
             break
-        else:
-            print("Ingrese una opción adecuada.")
+
 
 def archivos():
     pass
