@@ -1,33 +1,30 @@
 ## Funciones para archivos de texto
-def txt_op1():
+def txt_op1(ruta_txt):
     """Cuenta el número de palabras en el archivo de texto."""
-    ruta_archivo = input("Ingrese la ruta del archivo de texto: ")
     try:
-        with open(ruta_archivo, 'r') as archivo:
+        with open(ruta_txt, 'r') as archivo:
             texto = archivo.read()
             palabras = texto.split()
             print(f"Número total de palabras: {len(palabras)}")
     except FileNotFoundError:
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
-def txt_op2():
+def txt_op2(ruta_txt):
     """Reemplaza una palabra por otra en el archivo de texto."""
-    ruta_archivo = input("Ingrese la ruta del archivo de texto: ")
     palabra_vieja = input("Ingrese la palabra que desea reemplazar: ")
     palabra_nueva = input("Ingrese la nueva palabra: ")
     try:
-        with open(ruta_archivo, 'r') as archivo:
+        with open(ruta_txt, 'r') as archivo:
             texto = archivo.read()
         texto_modificado = texto.replace(palabra_vieja, palabra_nueva)
-        with open(ruta_archivo, 'w') as archivo:
+        with open(ruta_txt, 'w') as archivo:
             archivo.write(texto_modificado)
         print(f"'{palabra_vieja}' ha sido reemplazada por '{palabra_nueva}' en el archivo.")
     except FileNotFoundError:
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
-def txt_op3():
+def txt_op3(ruta_txt):
     """Cuenta el número de caracteres en el archivo de texto, con y sin espacios."""
-    ruta_archivo = input("Ingrese la ruta del archivo de texto: ")
     try:
-        with open(ruta_archivo, 'r') as archivo:
+        with open(ruta_txt, 'r') as archivo:
             texto = archivo.read()
             caracteres_con_espacios = len(texto)
             caracteres_sin_espacios = len(texto.replace(" ", ""))
@@ -37,16 +34,16 @@ def txt_op3():
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
 def txt():
     while True:
+        ruta_txt= input("Ingrese la ruta del archivo de texto: ")
         txt_op = input("Escoja la opción que desea realizar\n1) Contar numero de palabras\n2) Reemplazar una palabra por otra\n3) Contar el numero de caracteres\n4) Regresar al menu principal")
-                
         if txt_op == ("1"):
-            txt_op1()
+            txt_op1(ruta_txt)
             break
         elif txt_op == ("2"):
-            txt_op2()
+            txt_op2(ruta_txt)
             break
         elif txt_op == ("3"):
-            txt_op3()
+            txt_op3(ruta_txt)
             break
         elif txt_op == ("4"):
             print("Regresando a menu principal")
