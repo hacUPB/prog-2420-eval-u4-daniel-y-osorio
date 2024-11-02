@@ -147,7 +147,7 @@ def csv_op3(ruta_csv):
     except FileNotFoundError:
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
 
-def csv():
+def Fcsv():
     while True:
         ruta_csv = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
         csv_op = input("Que operación con archivos csv desea realizar? \n1) Mostrar las 15 primeras filas\n2) Calcular estadisticas\n3) Graficar una columna\n4) Regresar al menu principal\n")
@@ -174,7 +174,7 @@ def menu_ppl():
         if op == "1":
             txt()
         elif op == "2":
-            csv()
+            Fcsv()
         elif op == "3":
             archivos()
         elif op == "4":
