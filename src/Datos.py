@@ -61,15 +61,13 @@ def csv():
         csv_op = input("Que operación con archivos csv desea realizar? \n1) Mostrar las 15 primeras filas\n2) Calcular estadisticas\n3) Graficar una columna\n4) Regresar al menu principal")
         if csv_op == ("1"):
             csv_op1()
-            break
         elif csv_op == ("2"):
             csv_op2()
-            break
         elif csv_op == ("3"):
             csv_op3()
-            break
         elif csv_op == ("4"):
             print("Regresando a menu principal")
+            break
         else:
             print("Ingrese una opcion adecuada")
 def archivos():
