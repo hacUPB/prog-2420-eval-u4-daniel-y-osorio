@@ -47,6 +47,7 @@ def txt():
             break
         elif txt_op == ("4"):
             print("Regresando a menu principal")
+            menu_ppl()
         else:
             print("Ingrese una opcion adecuada")
 ## Funciones para archivos CSV
