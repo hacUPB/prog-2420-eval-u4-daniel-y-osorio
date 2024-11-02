@@ -1,3 +1,5 @@
+import csv
+import matplotlib.pyplot as plt
 ## Funciones para archivos de texto
 def txt_op1(ruta_txt):
     """Cuenta el número de palabras en el archivo de texto."""
@@ -52,11 +54,98 @@ def txt():
             print("Ingrese una opcion adecuada")
 ## Funciones para archivos CSV
 def csv_op1():
-    pass
+    """Mostrar las 15 primeras filas del archivo CSV."""
+    ruta_archivo = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
+    try:
+        with open(ruta_archivo, 'r') as archivo:
+            lector = csv.reader(archivo)
+            for i, fila in enumerate(lector):
+                if i >= 15:
+                    break
+                print(fila)
+    except FileNotFoundError:
+        print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
 def csv_op2():
-    pass
+     """Calcular estadísticas básicas de una columna específica."""
+ruta_archivo = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
+columna = input("Ingrese el nombre de la columna para calcular estadísticas: ")
+datos = []
+try:
+        with open(ruta_archivo, 'r') as archivo:
+            lector = csv.reader(archivo)
+            encabezados = next(lector)
+            
+            # Encontrar el índice de la columna
+            if columna not in encabezados:
+                print(f"Columna '{columna}' no encontrada en el archivo.")
+                return
+            indice_columna = encabezados.index(columna)
+            
+            # Recoger datos de la columna
+            for fila in lector:
+                try:
+                    dato = float(fila[indice_columna])
+                    datos.append(dato)
+                except ValueError:
+                    print(f"Valor no numérico encontrado en la fila {fila}. Saltando...")
+        
+        # Calcular estadísticas
+        if datos:
+            num_datos = len(datos)
+            promedio = sum(datos) / num_datos
+            datos_ordenados = sorted(datos)
+            mediana = (datos_ordenados[num_datos // 2] if num_datos % 2 != 0 
+                       else (datos_ordenados[num_datos // 2 - 1] + datos_ordenados[num_datos // 2]) / 2)
+            valor_maximo = max(datos)
+            valor_minimo = min(datos)
+            
+            print(f"Estadísticas para la columna '{columna}':")
+            print(f"Número de datos: {num_datos}")
+            print(f"Promedio: {promedio}")
+            print(f"Mediana: {mediana}")
+            print(f"Valor máximo: {valor_maximo}")
+            print(f"Valor mínimo: {valor_minimo}")
+        else:
+            print("No se encontraron datos numéricos en la columna.")
+    
+except FileNotFoundError:
+        print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
 def csv_op3():
-    pass
+    """Graficar los datos de una columna numérica."""
+    ruta_archivo = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
+    columna = input("Ingrese el nombre de la columna que desea graficar: ")
+    datos = []
+    try:
+        with open(ruta_archivo, 'r') as archivo:
+            lector = csv.reader(archivo)
+            encabezados = next(lector)
+            
+            # Encontrar el índice de la columna
+            if columna not in encabezados:
+                print(f"Columna '{columna}' no encontrada en el archivo.")
+                return
+            indice_columna = encabezados.index(columna)
+            
+            # Recoger datos de la columna
+            for fila in lector:
+                try:
+                    dato = float(fila[indice_columna])
+                    datos.append(dato)
+                except ValueError:
+                    print(f"Valor no numérico encontrado en la fila {fila}. Saltando...")
+
+        # Graficar los datos si hay datos numéricos
+        if datos:
+            plt.plot(datos)
+            plt.title(f"Gráfica de la columna '{columna}'")
+            plt.xlabel("Índice")
+            plt.ylabel("Valor")
+            plt.show()
+        else:
+            print("No se encontraron datos numéricos en la columna para graficar.")
+    
+    except FileNotFoundError:
+        print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
 def csv():
     while True:
         csv_op = input("Que operación con archivos csv desea realizar? \n1) Mostrar las 15 primeras filas\n2) Calcular estadisticas\n3) Graficar una columna\n4) Regresar al menu principal")
