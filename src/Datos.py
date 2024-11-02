@@ -40,8 +40,8 @@ def txt_op3(ruta_txt):
 
 def txt():
     while True:
-        ruta_txt= input("Ingrese la ruta del archivo de texto: ").strip('"').strip("'")
         txt_op = input("Escoja la opción que desea realizar\n1) Contar numero de palabras\n2) Reemplazar una palabra por otra\n3) Contar el numero de caracteres\n4) Regresar al menu principal\n")
+        ruta_txt= input("Ingrese la ruta del archivo de texto: ").strip('"').strip("'")
         if txt_op == "1":
             txt_op1(ruta_txt)
         elif txt_op == "2":
@@ -149,8 +149,8 @@ def csv_op3(ruta_csv):
 
 def Fcsv():
     while True:
-        ruta_csv = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
         csv_op = input("Que operación con archivos csv desea realizar? \n1) Mostrar las 15 primeras filas\n2) Calcular estadisticas\n3) Graficar una columna\n4) Regresar al menu principal\n")
+        ruta_csv = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
         if csv_op == "1":
             csv_op1(ruta_csv)
         elif csv_op == "2":
