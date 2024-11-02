@@ -53,11 +53,10 @@ def txt():
         else:
             print("Ingrese una opcion adecuada")
 ## Funciones para archivos CSV
-def csv_op1():
+def csv_op1(ruta_csv):
     """Mostrar las 15 primeras filas del archivo CSV."""
-    ruta_archivo = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
     try:
-        with open(ruta_archivo, 'r') as archivo:
+        with open(ruta_csv, 'r') as archivo:
             lector = csv.reader(archivo)
             for i, fila in enumerate(lector):
                 if i >= 15:
@@ -65,29 +64,26 @@ def csv_op1():
                 print(fila)
     except FileNotFoundError:
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
-def csv_op2():
-     """Calcular estadísticas básicas de una columna específica."""
-ruta_archivo = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
-columna = input("Ingrese el nombre de la columna para calcular estadísticas: ")
-datos = []
-try:
-        with open(ruta_archivo, 'r') as archivo:
-            lector = csv.reader(archivo)
-            encabezados = next(lector)
-            
-            # Encontrar el índice de la columna
-            if columna not in encabezados:
-                print(f"Columna '{columna}' no encontrada en el archivo.")
-                return
-            indice_columna = encabezados.index(columna)
-            
+def csv_op2(ruta_csv):
+    columna = input("Ingrese el nombre de la columna para calcular estadísticas: ")
+    datos = []
+    with open(ruta_csv, 'r') as archivo:
+        lector = csv.reader(archivo)
+        encabezados = next(lector)
+    try:           
+# Encontrar el índice de la columna
+        if columna not in encabezados:
+            print(f"Columna '{columna}' no encontrada en el archivo.")
+            return
+        indice_columna = encabezados.index(columna)
+                
             # Recoger datos de la columna
-            for fila in lector:
-                try:
-                    dato = float(fila[indice_columna])
-                    datos.append(dato)
-                except ValueError:
-                    print(f"Valor no numérico encontrado en la fila {fila}. Saltando...")
+        for fila in lector:
+            try:
+                dato = float(fila[indice_columna])
+                datos.append(dato)
+            except ValueError:
+                print(f"Valor no numérico encontrado en la fila {fila}. Saltando...")
         
         # Calcular estadísticas
         if datos:
@@ -108,15 +104,14 @@ try:
         else:
             print("No se encontraron datos numéricos en la columna.")
     
-except FileNotFoundError:
+    except FileNotFoundError:
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
-def csv_op3():
+def csv_op3(ruta_csv):
     """Graficar los datos de una columna numérica."""
-    ruta_archivo = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
     columna = input("Ingrese el nombre de la columna que desea graficar: ")
     datos = []
     try:
-        with open(ruta_archivo, 'r') as archivo:
+        with open(ruta_csv, 'r') as archivo:
             lector = csv.reader(archivo)
             encabezados = next(lector)
             
@@ -148,13 +143,14 @@ def csv_op3():
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
 def csv():
     while True:
+        ruta_csv = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
         csv_op = input("Que operación con archivos csv desea realizar? \n1) Mostrar las 15 primeras filas\n2) Calcular estadisticas\n3) Graficar una columna\n4) Regresar al menu principal")
         if csv_op == ("1"):
-            csv_op1()
+            csv_op1(ruta_csv)
         elif csv_op == ("2"):
-            csv_op2()
+            csv_op2(ruta_csv)
         elif csv_op == ("3"):
-            csv_op3()
+            csv_op3(ruta_csv)
         elif csv_op == ("4"):
             print("Regresando a menu principal")
             break
