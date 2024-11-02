@@ -66,6 +66,6 @@ def menu_ppl():
             print("Saliendo del programa...")
             break
         else: 
-            print("Ingrese una opcion adecuada")
+            print("Ingrese una opcion adecuada, por favor")
 if __name__ == "__main__":
     menu_ppl()
