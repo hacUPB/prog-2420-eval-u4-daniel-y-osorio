@@ -1,16 +1,19 @@
 ## Funciones para archivos de texto
 def txt_op1():
-    pass
+    with open("archivo.txt", "r") as file:
+        texto = file.read()
+        palabras = texto.split()
+        return len(palabras)
 def txt_op2():
     pass
 def txt_op3():
     pass
 def txt():
     while True:
+        ruta_txt = input("Ingrese la ruta del archivo")
         txt_op = input("Escoja la opción que desea realizar\n1) Contar numero de palabras\n2) Reemplazar una palabra por otra\n3) Contar el numero de caracteres\n4) Regresar al menu principal")
-                
         if txt_op == ("1"):
-            txt_op1()
+            txt_op1(ruta_txt)
             break
         elif txt_op == ("2"):
             txt_op2()
@@ -61,7 +64,7 @@ def menu_ppl():
             
         elif op == ("3"):
             archivos()
-            pass
+            
         elif op == ("4"):
             print("Saliendo del programa...")
             break
