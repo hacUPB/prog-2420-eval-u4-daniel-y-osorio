@@ -181,7 +181,7 @@ def buscar():
 
 def archivos():
     while True:
-        archivos_op = input("Que acción con archivos desea realizar? \n1) Listar archivos en la ruta actual\n2)Ingresar una ruta donde listar los archivos\n3) Regresar al menu principal")
+        archivos_op = input("Que acción con archivos desea realizar? \n1) Listar archivos en la ruta actual\n2) Ingresar una ruta donde listar los archivos\n3) Regresar al menu principal")
         if archivos_op != ("3"):
             if archivos_op == ("1"):
                 listar()
