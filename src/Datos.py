@@ -149,3 +149,39 @@ def csv_op3(ruta_csv):
 
 def csv():
     while True:
+        ruta_csv = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
+        csv_op = input("Que operación con archivos csv desea realizar? \n1) Mostrar las 15 primeras filas\n2) Calcular estadisticas\n3) Graficar una columna\n4) Regresar al menu principal\n")
+        if csv_op == "1":
+            csv_op1(ruta_csv)
+        elif csv_op == "2":
+            csv_op2(ruta_csv)
+        elif csv_op == "3":
+            csv_op3(ruta_csv)
+        elif csv_op == "4":
+            print("Regresando a menu principal")
+            break
+        else:
+            print("Ingrese una opción adecuada.")
+
+def archivos():
+    pass
+
+## Menú principal
+def menu_ppl():
+    print("Bienvenido al menú principal")
+    while True:
+        op = input("¿Qué operación desea realizar? \n1) Archivos de texto\n2) Archivos CSV\n3) Listar archivos\n4) Salir\n")
+        if op == "1":
+            txt()
+        elif op == "2":
+            csv()
+        elif op == "3":
+            archivos()
+        elif op == "4":
+            print("Saliendo del programa...")
+            break
+        else: 
+            print("Ingrese una opción adecuada, por favor")
+
+if __name__ == "__main__":
+    menu_ppl()
