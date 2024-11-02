@@ -34,7 +34,7 @@ def txt_op3(ruta_txt):
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
 def txt():
     while True:
-        ruta_txt= input("Ingrese la ruta del archivo de texto: ")
+        ruta_txt= input("Ingrese la ruta del archivo de texto: ").strip('"').strip("'")
         txt_op = input("Escoja la opción que desea realizar\n1) Contar numero de palabras\n2) Reemplazar una palabra por otra\n3) Contar el numero de caracteres\n4) Regresar al menu principal")
         if txt_op == ("1"):
             txt_op1(ruta_txt)
