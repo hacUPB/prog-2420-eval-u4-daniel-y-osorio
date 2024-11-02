@@ -165,9 +165,27 @@ def Fcsv():
             print("Regresando a menu principal")
             break
 
+def listar():
+    pass
+
+def buscar():
+    pass
 
 def archivos():
-    pass
+    while True:
+        archivos_op = input("Que acción con archivos desea realizar? \n1) Listar archivos en la ruta actual\n2)Ingresar una ruta donde listar los archivos\n3) Regresar al menu principal")
+        if archivos_op != ("3"):
+            if archivos_op == ("1"):
+                listar()
+            elif archivos_op == ("2"):
+                buscar()
+            else:
+                print("Ingrse una opcion adecuada")
+        else:
+            print("Regresando a menu principal")
+            break
+
+    
 
 ## Menú principal
 def menu_ppl():
