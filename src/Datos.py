@@ -1,5 +1,6 @@
 import csv
 import matplotlib.pyplot as plt
+import os 
 
 ## Funciones para archivos de texto
 def txt_op1(ruta_txt):
@@ -166,10 +167,17 @@ def Fcsv():
             break
 
 def listar():
-    pass
+    ruta_actual = os.getcwd()
+    print(f"Archivos en el directorio actual ({ruta_actual}):")
+    for archivo in os.listdir(ruta_actual):
+        print(archivo)
 
 def buscar():
-    pass
+    ruta = input("Ingrese la ruta del directorio que desea listar: ").strip('"').strip("'")
+    if os.path.isdir(ruta):
+        print(f"Archivos en el directorio ({ruta}):")
+        for archivo in os.listdir(ruta):
+            print(archivo)
 
 def archivos():
     while True:
