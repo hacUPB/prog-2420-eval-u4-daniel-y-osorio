@@ -1,5 +1,6 @@
 import csv
 import matplotlib.pyplot as plt
+
 ## Funciones para archivos de texto
 def txt_op1(ruta_txt):
     """Cuenta el número de palabras en el archivo de texto."""
@@ -10,6 +11,7 @@ def txt_op1(ruta_txt):
             print(f"Número total de palabras: {len(palabras)}")
     except FileNotFoundError:
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
+
 def txt_op2(ruta_txt):
     """Reemplaza una palabra por otra en el archivo de texto."""
     palabra_vieja = input("Ingrese la palabra que desea reemplazar: ")
@@ -23,6 +25,7 @@ def txt_op2(ruta_txt):
         print(f"'{palabra_vieja}' ha sido reemplazada por '{palabra_nueva}' en el archivo.")
     except FileNotFoundError:
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
+
 def txt_op3(ruta_txt):
     """Cuenta el número de caracteres en el archivo de texto, con y sin espacios."""
     try:
@@ -34,24 +37,23 @@ def txt_op3(ruta_txt):
             print(f"Número de caracteres (sin espacios): {caracteres_sin_espacios}")
     except FileNotFoundError:
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
+
 def txt():
     while True:
         ruta_txt= input("Ingrese la ruta del archivo de texto: ").strip('"').strip("'")
-        txt_op = input("Escoja la opción que desea realizar\n1) Contar numero de palabras\n2) Reemplazar una palabra por otra\n3) Contar el numero de caracteres\n4) Regresar al menu principal")
-        if txt_op == ("1"):
+        txt_op = input("Escoja la opción que desea realizar\n1) Contar numero de palabras\n2) Reemplazar una palabra por otra\n3) Contar el numero de caracteres\n4) Regresar al menu principal\n")
+        if txt_op == "1":
             txt_op1(ruta_txt)
-            break
-        elif txt_op == ("2"):
+        elif txt_op == "2":
             txt_op2(ruta_txt)
-            break
-        elif txt_op == ("3"):
+        elif txt_op == "3":
             txt_op3(ruta_txt)
-            break
-        elif txt_op == ("4"):
+        elif txt_op == "4":
             print("Regresando a menu principal")
-            menu_ppl()
+            break
         else:
-            print("Ingrese una opcion adecuada")
+            print("Ingrese una opción adecuada.")
+
 ## Funciones para archivos CSV
 def csv_op1(ruta_csv):
     """Mostrar las 15 primeras filas del archivo CSV."""
@@ -64,26 +66,28 @@ def csv_op1(ruta_csv):
                 print(fila)
     except FileNotFoundError:
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
+
 def csv_op2(ruta_csv):
     columna = input("Ingrese el nombre de la columna para calcular estadísticas: ")
     datos = []
-    with open(ruta_csv, 'r') as archivo:
-        lector = csv.reader(archivo)
-        encabezados = next(lector)
-    try:           
-# Encontrar el índice de la columna
-        if columna not in encabezados:
-            print(f"Columna '{columna}' no encontrada en el archivo.")
-            return
-        indice_columna = encabezados.index(columna)
-                
+    try:
+        with open(ruta_csv, 'r') as archivo:
+            lector = csv.reader(archivo)
+            encabezados = next(lector)
+            
+            # Encontrar el índice de la columna
+            if columna not in encabezados:
+                print(f"Columna '{columna}' no encontrada en el archivo.")
+                return
+            indice_columna = encabezados.index(columna)
+            
             # Recoger datos de la columna
-        for fila in lector:
-            try:
-                dato = float(fila[indice_columna])
-                datos.append(dato)
-            except ValueError:
-                print(f"Valor no numérico encontrado en la fila {fila}. Saltando...")
+            for fila in lector:
+                try:
+                    dato = float(fila[indice_columna])
+                    datos.append(dato)
+                except ValueError:
+                    print(f"Valor no numérico encontrado en la fila {fila}. Saltando...")
         
         # Calcular estadísticas
         if datos:
@@ -106,6 +110,7 @@ def csv_op2(ruta_csv):
     
     except FileNotFoundError:
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
+
 def csv_op3(ruta_csv):
     """Graficar los datos de una columna numérica."""
     columna = input("Ingrese el nombre de la columna que desea graficar: ")
@@ -141,42 +146,6 @@ def csv_op3(ruta_csv):
     
     except FileNotFoundError:
         print("Archivo no encontrado. Verifique la ruta e intente de nuevo.")
+
 def csv():
     while True:
-        ruta_csv = input("Ingrese la ruta del archivo CSV: ").strip('"').strip("'")
-        csv_op = input("Que operación con archivos csv desea realizar? \n1) Mostrar las 15 primeras filas\n2) Calcular estadisticas\n3) Graficar una columna\n4) Regresar al menu principal")
-        if csv_op == ("1"):
-            csv_op1(ruta_csv)
-        elif csv_op == ("2"):
-            csv_op2(ruta_csv)
-        elif csv_op == ("3"):
-            csv_op3(ruta_csv)
-        elif csv_op == ("4"):
-            print("Regresando a menu principal")
-            break
-        else:
-            print("Ingrese una opcion adecuada")
-def archivos():
-    pass
-## Menu principal
-def menu_ppl():
-    print("Bienvenido al menu principal")
-    while True:
-        op = input("Que operación con archivos de texto desea realizar? \n1) Archivos de texto\n2) Archivos CSV\n3) Listar archivos\n4) Salir")
-
-        if op == ("1"):
-            txt()
-                    
-        elif op == ("2"):
-            csv()
-            
-        elif op == ("3"):
-            archivos()
-            pass
-        elif op == ("4"):
-            print("Saliendo del programa...")
-            break
-        else: 
-            print("Ingrese una opcion adecuada, por favor")
-if __name__ == "__main__":
-    menu_ppl()
