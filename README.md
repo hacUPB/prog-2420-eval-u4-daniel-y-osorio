@@ -2,6 +2,14 @@
 # Unidad 
 ---
 ## Documentación del proyecto
-Nombre:  
-ID:  
+Nombre: Daniel Arango Escobar
+ID: 000536416
+Nombre: Alejandro Osorio Peñaranda  
+ID: 000548058
 ---
+## Video:
+https://www.youtube.com/watch?v=HEyFlhRHdeA
+
+## Usos de IA 
+Revision de funciones
+Operaciones matematicas para estadisticas
